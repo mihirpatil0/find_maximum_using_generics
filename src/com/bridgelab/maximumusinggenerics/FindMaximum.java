@@ -36,6 +36,29 @@ public class FindMaximum
                 }
             }
         }
+		printSortedArray(sortArray);
+	}
+	
+	/**
+	 * Name : printSortedArray
+	 * 
+	 * Description : printing sorted array.
+	 * 
+	 * @param <T>
+	 * @param sortArray
+	 * 
+	 * Modification : First commit 01-July-2021
+	 */
+	public static <T> void printSortedArray(T[] sortArray)
+	{
+		System.out.println("Sorted Array:");
+		System.out.print("[");
+		for(T element : sortArray)
+		{
+			System.out.print(" " + element + " ");
+		}
+		System.out.print("]");
+		System.out.println();
 	}
 	
 	/**
