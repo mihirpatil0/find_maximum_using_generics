@@ -9,94 +9,54 @@ package com.bridgelab.maximumusinggenerics;
 
 public class FindMaximum
 {
-	static Integer max;
-	static Float maxFloat;
-	static String maxString;
-	
 	/**
-	 * Name : maximumInteger
+	 * Name : genericMaximum
 	 * 
-	 * Description : Finding maximum number.
+	 * Description : Finding maximum amongst all.
 	 * 
 	 * @param intNumeOne
 	 * @param intNumTwo
 	 * @param intNumThree
 	 * @return
 	 * 
-	 * Algorithm : Finding max integer using compareTo() method.
+	 * Algorithm : Finding max variable using compareTo() method who's having T type of data type.
 	 * 
-	 * Modification : First commit 30-June-2021.
+	 * Modification : 2nd commit 01-July-2021.
 	 */
-	public static int maximumInteger(Integer intNumeOne, Integer intNumTwo, Integer intNumThree)
+	public static<T extends Comparable<T>> T genericMaximum(T intNumeOne, T intNumTwo, T intNumThree)
 	{
-		max = intNumeOne;
-		if(intNumTwo.compareTo(max) > 0)
+		T maximum = intNumeOne;
+		if(intNumTwo.compareTo(maximum) > 0)
 		{
-			max = intNumTwo;
+			maximum = intNumTwo;
 		}
-		if(intNumThree.compareTo(max) > 0)
+		if(intNumThree.compareTo(maximum) > 0)
 		{
-			max = intNumThree;
+			maximum = intNumThree;
 		}
-		return max;
+		displayMaximum(intNumeOne, intNumTwo, intNumThree, maximum);
+		return maximum;
 	}
 	
 	/**
-	 * Name : maximumFloat
+	 * Name : displayMaximum
 	 * 
-	 * Description : Finding maximum float number.
+	 * Description : Display Maximum amongst all.
 	 * 
-	 * @param floatNumOne
-	 * @param floatNumTwo
-	 * @param floatNumThree
-	 * @return
-	 * Algorithm : Finding max Float value using compareTo() method.
+	 * @param <T>
+	 * @param firstVariable
+	 * @param secondVariable
+	 * @param thirdVariable
+	 * @param maximumVariable
 	 * 
-	 * Modification : First commit 30-June-2021
+	 * Algorithm : Accepting returned variables from genericMaximum() method and just printing the maximum variable amongst all.
+	 * 
+	 * Modification : First commit 01-July-2021
 	 */
-	public static Float maximumFloat(Float floatNumOne, Float floatNumTwo, Float floatNumThree)
+	public static <T> void displayMaximum(T firstVariable, T secondVariable, T thirdVariable, T maximumVariable)
 	{
-		maxFloat = floatNumOne;
-		
-		if(floatNumTwo.compareTo(maxFloat) > 0)
-		{
-			maxFloat = floatNumTwo;
-		}
-		if(floatNumThree.compareTo(maxFloat) > 0)
-		{
-			maxFloat = floatNumThree;
-		}
-		return maxFloat;
+		System.out.println("Maximum amoungst : " + firstVariable + ", " + secondVariable + ", " + thirdVariable + " : is : " + maximumVariable);
 	}
-	
-	/**
-	 * Name : maximumString
-	 * 
-	 * Description : Printing maximum String.
-	 * @param stringOne
-	 * @param stringTwo
-	 * @param stringThree
-	 * @return
-	 * 
-	 * Algorithm : Finding max String value using compareTo() method.
-	 * 
-	 * Modification : First commit 30-June-2021
-	 */
-	public static String maximumString(String stringOne, String stringTwo, String stringThree)
-	{
-		maxString = stringOne;
-		
-		if(stringTwo.compareTo(maxString) > 0)
-		{
-			maxString = stringTwo;
-		}
-		if(stringThree.compareTo(maxString) > 0)
-		{
-			maxString = stringThree;
-		}
-		return maxString;
-	}
-	
 	/**
 	 * @param args
 	 * Passing integer value to function.
@@ -109,13 +69,8 @@ public class FindMaximum
 		Float floatNumOne = 218.13f, floatNumTwo = 555.453f, floatNumThree = 999.999f;
 		String stringOne = "Apple", stringTwo = "Peach", stringThree = "Banana";
 		
-		maximumInteger(intNumeOne, intNumTwo, intNumThree);
-		System.out.println("Maximum amoungst : " + intNumeOne + ", " + intNumTwo + ", " + intNumThree + " : is : " + max);
-		
-		maximumFloat(floatNumOne, floatNumTwo, floatNumThree);
-		System.out.println("Maximum amoungst : " + floatNumOne + ", " + floatNumTwo + ", " + floatNumThree + " is : " + maxFloat);
-		
-		maximumString(stringOne, stringTwo, stringThree);
-		System.out.println("Maximum amoungst : " + stringOne + ", " + stringTwo + ", " + stringThree + " is : " + maxString);
+		genericMaximum(intNumeOne, intNumTwo, intNumThree);
+		genericMaximum(floatNumOne, floatNumTwo, floatNumThree);
+		genericMaximum(stringOne, stringTwo, stringThree);
 	}
 }
