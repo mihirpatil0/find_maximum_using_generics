@@ -4,106 +4,52 @@ package com.bridgelab.maximumusinggenerics;
  * @author mihir
  * @since 30-June-2021
  * 
- * Finding maximum numbers using generic.
+ * Using generic array and sorting it.
  ****************************************/
 
-public class FindMaximum<T extends Comparable<T>>
+public class FindMaximum
 {
-	T firstVariable, secondVariable, thirdVariable;
-	
 	/**
-	 * Parameterized constructor.
+	 * Name : sorting.
 	 * 
-	 * @param firstVariable
-	 * @param secondVariable
-	 * @param thirdVariable
-	 */
-	public FindMaximum(T firstVariable, T secondVariable, T thirdVariable) {
-		super();
-		this.firstVariable = firstVariable;
-		this.secondVariable = secondVariable;
-		this.thirdVariable = thirdVariable;
-	}
-
-	/**
-	 * Name : genericMaximum
-	 * 
-	 * Description : Finding maximum amongst all.
-	 * 
-	 * @param intNumeOne
-	 * @param intNumTwo
-	 * @param intNumThree
-	 * @return
-	 * 
-	 * Algorithm : Finding max variable using compareTo() method who's having T type of data type.
-	 * 
-	 * Modification : 2nd commit 01-July-2021.
-	 */
-	public static<T extends Comparable<T>> T genericMaximum(T intNumeOne, T intNumTwo, T intNumThree)
-	{
-		T maximum = intNumeOne;
-		if(intNumTwo.compareTo(maximum) > 0)
-		{
-			maximum = intNumTwo;
-		}
-		if(intNumThree.compareTo(maximum) > 0)
-		{
-			maximum = intNumThree;
-		}
-		displayMaximum(intNumeOne, intNumTwo, intNumThree, maximum);
-		return maximum;
-	}
-	
-	/**
-	 * Name : genericMaximum
-	 * 
-	 * Description : Calling genericMaximum() parameterized method.
-	 * 
-	 * Algorithm : Doing method overloading and calling genericMaximum() parameterized method.
-	 * 
-	 * Modification : First commit 01-July-2021
-	 */
-	public void genericMaximum()
-	{
-		genericMaximum(this.firstVariable,this.secondVariable,this.thirdVariable);
-	}
-	
-	/**
-	 * Name : displayMaximum
-	 * 
-	 * Description : Display Maximum amongst all.
-	 * 
+	 * Description : sorting array.
+	 *
 	 * @param <T>
-	 * @param firstVariable
-	 * @param secondVariable
-	 * @param thirdVariable
-	 * @param maximumVariable
+	 * @param sortArray
 	 * 
-	 * Algorithm : Accepting returned variables from genericMaximum() method and just printing the maximum variable amongst all.
+	 * Algorithm  : accepting generic type of arrays using bubble sort to sort the array.
+	 * using compareTo() method to compare adjacent array element and swapping them to sort the array.
 	 * 
 	 * Modification : First commit 01-July-2021
 	 */
-	public static <T> void displayMaximum(T firstVariable, T secondVariable, T thirdVariable, T maximumVariable)
+	public static<T extends Comparable<T>> void sorting(T[] sortArray)
 	{
-		System.out.println("Maximum amoungst : " + firstVariable + ", " + secondVariable + ", " + thirdVariable + " : is : " + maximumVariable);
+		for (int i = 0; i < sortArray.length; i++)
+		{
+            for (int j = i + 1; j < sortArray.length; j++)
+            {
+                if (sortArray[i].compareTo(sortArray[j]) > 0)
+                {
+                    T temp = sortArray[i];
+                    sortArray[i] = sortArray[j];
+                    sortArray[j] = temp;
+                }
+            }
+        }
 	}
+	
 	/**
+	 * Name : main.
+	 * Calling methods from main.
+	 * 
 	 * @param args
-	 * Passing integer value to function.
-	 * Calling maximumInteger function.
-	 * printing the maximum number as a result.
 	 */
 	public static void main(String[] args)
 	{
-		Integer intNumeOne = 15, intNumTwo = 55, intNumThree = 24;
-		Float floatNumOne = 218.13f, floatNumTwo = 555.453f, floatNumThree = 999.999f;
-		String stringOne = "Apple", stringTwo = "Peach", stringThree = "Banana";
+		Integer[] intArray = { 76, 29, 44, 99, 2, 7};
+		Double[] doubleArray = { 44.79, 1.1, 77.68, 2.2, 0.1, 55.1};
 		
-		FindMaximum<Integer> findmaximumIntObject = new FindMaximum<Integer>(intNumeOne, intNumTwo, intNumThree);
-		findmaximumIntObject.genericMaximum();
-		FindMaximum<Float> findmaximumFloatObject = new FindMaximum<Float>(floatNumOne, floatNumTwo, floatNumThree);
-		findmaximumFloatObject.genericMaximum();
-		FindMaximum<String> findmaximumStringObject = new FindMaximum<String>(stringOne, stringTwo, stringThree);
-		findmaximumStringObject.genericMaximum();
+		sorting(intArray);
+		sorting(doubleArray);
 	}
 }
