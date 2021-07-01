@@ -7,8 +7,24 @@ package com.bridgelab.maximumusinggenerics;
  * Finding maximum numbers using generic.
  ****************************************/
 
-public class FindMaximum
+public class FindMaximum<T extends Comparable<T>>
 {
+	T firstVariable, secondVariable, thirdVariable;
+	
+	/**
+	 * Parameterized constructor.
+	 * 
+	 * @param firstVariable
+	 * @param secondVariable
+	 * @param thirdVariable
+	 */
+	public FindMaximum(T firstVariable, T secondVariable, T thirdVariable) {
+		super();
+		this.firstVariable = firstVariable;
+		this.secondVariable = secondVariable;
+		this.thirdVariable = thirdVariable;
+	}
+
 	/**
 	 * Name : genericMaximum
 	 * 
@@ -36,6 +52,20 @@ public class FindMaximum
 		}
 		displayMaximum(intNumeOne, intNumTwo, intNumThree, maximum);
 		return maximum;
+	}
+	
+	/**
+	 * Name : genericMaximum
+	 * 
+	 * Description : Calling genericMaximum() parameterized method.
+	 * 
+	 * Algorithm : Doing method overloading and calling genericMaximum() parameterized method.
+	 * 
+	 * Modification : First commit 01-July-2021
+	 */
+	public void genericMaximum()
+	{
+		genericMaximum(this.firstVariable,this.secondVariable,this.thirdVariable);
 	}
 	
 	/**
@@ -69,8 +99,11 @@ public class FindMaximum
 		Float floatNumOne = 218.13f, floatNumTwo = 555.453f, floatNumThree = 999.999f;
 		String stringOne = "Apple", stringTwo = "Peach", stringThree = "Banana";
 		
-		genericMaximum(intNumeOne, intNumTwo, intNumThree);
-		genericMaximum(floatNumOne, floatNumTwo, floatNumThree);
-		genericMaximum(stringOne, stringTwo, stringThree);
+		FindMaximum<Integer> findmaximumIntObject = new FindMaximum<Integer>(intNumeOne, intNumTwo, intNumThree);
+		findmaximumIntObject.genericMaximum();
+		FindMaximum<Float> findmaximumFloatObject = new FindMaximum<Float>(floatNumOne, floatNumTwo, floatNumThree);
+		findmaximumFloatObject.genericMaximum();
+		FindMaximum<String> findmaximumStringObject = new FindMaximum<String>(stringOne, stringTwo, stringThree);
+		findmaximumStringObject.genericMaximum();
 	}
 }
